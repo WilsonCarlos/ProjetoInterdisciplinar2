@@ -5,10 +5,10 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
-
+<meta charset="utf-8">
    <title>Direção Certa - Caruaru</title>
 
-    <meta charset="utf-8">
+    
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -94,12 +94,12 @@
 		<th><a href="formalteraradministrador.html">Alterar</a></th></tr>
 	
 	<% for(Administrador a : lista){%>
-	
+			
 		<tr  align="center" bottom="middle">	
-			<td><%out.print(a.getId_administrador());%></td> 
-			<td><%= a.getNome_administrador()%></td>
-			<td><%= a.getLogin_administrador()%></td>
-			<td><%= a.getCpf_administrador()%></td>
+			<td><%out.print(a.getId_administrador());%> 
+			<td><%= a.getNome_administrador()%>
+			<td><%= a.getLogin_administrador()%>
+			<td><%= a.getCpf_administrador()%>
 			<td><a href="javascript:confirmaExclusao(<%=a.getId_administrador()%>)">
 			 <img src="img/delete.png"/>
 			 </a></td>
@@ -109,6 +109,8 @@
 	<div align="right">
 		<br><br>
 		<a href="empresacontroller.do?acao=lis" class="btn btn-lg btn-primary button--ujarak">Ver Empresas</a>
+		<br><br>
+		<a href="mapacontroller.do?acao=lis" class="btn btn-lg btn-primary button--ujarak">Ver Mapas</a>
 	</div>
     
     

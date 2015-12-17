@@ -21,6 +21,28 @@
 
 
 </head>
+<script src="http://code.jquery.com/jquery-2.0.0.min.js"></script>
+<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false&amp;language=pt"></script>
+<script src="js/mapsRoute.js"></script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $("#rota").mapsRota({
+            address: "Av. Azevedo Coutinho",
+            number : "s/n",
+            city: "Caruaru",
+            region: 'BR',
+            rota: {
+                valor : "Peladas, Caruaru - PE",
+                onComplete: function(data){
+                    console.log(data);
+                }
+            }
+        });
+    });
+</script>
+
 <body>
 <header>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
@@ -38,9 +60,9 @@
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
 
                 <div id = "bandeiras">
-                    <a href="index.html"><img src="img/bandeiras/Brazil-icon.png"></a>
-                    <a href="index.html"> <img src="img/bandeiras/United-Kingdom-icon.png"></a>
-                    <a href="index.html"><img src="img/bandeiras/Spain-icon.png"></a>
+                    <a href="index.html"><img src="img/bandeiras/brasil.png"></a>
+                    <a href="indexen.html"> <img src="img/bandeiras/uk.png"></a>
+                    <a href="indexes.html"><img src="img/bandeiras/espanhol.png"></a>
                 </div>
 
                 <div id = "navegação">
@@ -166,7 +188,7 @@
 </script>
 <!-- Jssor Slider Begin -->
 <!-- To move inline styles to css file/block, please specify a class name for each element. -->
-<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 960px;
+<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 1099px;
         height: 480px; background: #191919; overflow: hidden;">
 
 <!-- Loading Screen -->
@@ -176,12 +198,19 @@
     </div>
     <div style="position: absolute; display: block; background: url(img/loading.gif) no-repeat center center;
                 top: 0px; left: 0px;width: 100%;height:100%;">
+
     </div>
+
+
 </div>
 
 <br>
+
+
 <!-- Slides Container -->
-<div u="slides" style="cursor: move; position: absolute; left: 240px; top: 0px; width: 720px; height: 480px; overflow: hidden;">
+
+<div>
+<div u="slides" style="cursor: move; position: absolute; left: 240px; top: 0px; width:  859px; height: 480px; overflow: hidden;">
 
     <div>
 
@@ -245,7 +274,6 @@
 
 
 </div>
-
 
 
 
@@ -385,62 +413,122 @@
         </div>
     </div>
     <!-- Thumbnail Item Skin End -->
+
+
 </div>
+
 <!--#endregion Thumbnail Navigator Skin End -->
 <a style="display: none" href="http://www.jssor.com">Image Slider</a>
 <!-- Trigger -->
 <script>
     jssor_slider1_starter('slider1_container');
 </script>
+
+
+</div>
 </div>
 
 
 <div align="center">
-    <span style="color:#fe442c; font-size:15px; font-weight:bold;">Vale a pena ir conhecer, clima agradável, contato direto com a natureza. Você pode aproveitar o <br>passeio e ir até o açude que antes abastecia Caruaru ou visitar a comunidade Hare Krishna!</span><br/><br/>
+     <span style="color:#fe442c; font-size:15px; font-weight:bold;">Turismo de Aventura na Serra dos Cavalos- Está ai uma ótima pedida para quem é amante da natureza e da aventura.
+        Com 359 ha<br> de extensão, a reserva fica na vila do Murici e abriga diversas trilhas ecológicas com vasta diversidade na fauna.
+        Outro atrativo que não<br> pode ficar de fora da visita é a comunidade Nova Vraja Dhama, lá turistas são recebidos por Lakshmi Priya
+        que falou sobre a filosofia de vida<br> dos Hares Crishnas que também estão empenhados pela preservação do local, saiba mais clicando
+        <a href="http://citihoteis.com.br/toemcaruaru/pontos-turisticos/parque-natural-joao-vasconcelos-sobrinho-serra-dos-cavalos/"
+           target="_blank">Aqui.</a></span><br/><br/>
+
 </div>
-<!-- Jssor Slider End -->
-</body>
-<br><br><br><br>
-
-<div class="clear">
-    <br/><br/>
-
-    <span style="color:#2b36fe; font-size:18px; font-weight:bold;">Como chegar?</span><br/><br/>
-    <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+<br><br><br>
+ <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <style type="text/css">
+      html { height: 100% }
+      body { height: 100%; margin: 0; padding: 0 }
+      .wrap { max-width: 75em; min-height: 40em; height:100%; width:100%; margin: 0 auto; padding-top: 2.5%;}
+      #map-canvas { height: 90%;
+      -moz-box-shadow: 0 3px 3px 3px rgba(0,0,0,0.9), 0 0 0 0px #000;
+      -webkit-box-shadow: 0 3px 3px 3px rgba(0,0,0,0.9), 0 0 0 0px #000;
+      box-shadow: 0 3px 3px 3px rgba(0,0,0,0.9), 0 0 0 3px #000;
+       }
+    </style>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=true"></script>
     <script type="text/javascript">
-        google.maps.event.addDomListener(window, 'load', function() {
-            var map = new google.maps.Map(document.getElementById('map'), {
-                zoom: 17,
-                center: new google.maps.LatLng(-8.2823339, -35.9652423),
-                mapTypeId: google.maps.MapTypeId.ROADMAP
-            });
+      var map;
+      var centerPos = new google.maps.LatLng(-8.2971983,-35.9980488);
+      var zoomLevel = 14;
 
-            var infoWindow = new google.maps.InfoWindow;
+      function LogoControl(controlDiv, map) {
 
-            var onMarkerClick = function() {
-                var marker = this;
-                var latLng = marker.getPosition();
-                infoWindow.setContent('<h3>Endereço do Ponto Turístico:</h3> R. São Vicente de Paula, 187 - Nossa Sra. das Dores, Caruaru - PE, Brasil');
+        controlDiv.style.padding = '5px';
 
-                infoWindow.open(map, marker);
-            };
-            google.maps.event.addListener(map, 'click', function() {
-                infoWindow.close();
-            });
+        var controlUI = document.createElement('div');
+        controlUI.style.backgroundImage = 'url(images/logo.png)';
+        controlUI.style.width = '600px';
+        controlUI.style.height = '116px';
+        controlUI.style.cursor = 'pointer';
+        controlUI.title = 'Click to set the map to Home';
+        controlDiv.appendChild(controlUI);
 
-            var marker1 = new google.maps.Marker({
-                map: map,
-                position: new google.maps.LatLng(-8.2823339, -35.9652423)
-            });
-
-
-            google.maps.event.addListener(marker1, 'click', onMarkerClick);
+        google.maps.event.addDomListener(controlUI, 'click', function() {
+          map.setCenter(centerPos)
+          map.setZoom(zoomLevel)
         });
-    </script>
-    <div id="map" style="width: 89%; height: 400px"></div>
-</div>
 
-</div>
+      }
+
+      function initialize() {
+
+    
+        var mapOptions = {
+          center: centerPos,
+          zoom: zoomLevel
+        };
+        
+        map = new google.maps.Map( document.getElementById("map-canvas"), mapOptions );
+
+        var locations = [
+          ['First Shoppe', -8.291774, -36.011806],
+          ['Second Shoppe', -8.301541, -35.981593],
+          ['Third Shoppe', -8.2984809, -35.9747180],
+          ['Fourth Shoppe', -8.303664, -36.007257],
+          ['Fifth Shoppe', -8.301626, -36.000476],
+          ['Sixth Shoppe', -8.300097, -35.993438],
+          ['Seventh Shoppe', -8.298993, -35.975757]
+        ];
+
+        var image = 'images/shoppe_icon.png';
+
+        for (i = 0; i < locations.length; i++) {  
+          marker = new google.maps.Marker({
+            position: new google.maps.LatLng(locations[i][1], locations[i][2]),
+            title: locations[i][0],
+            map: map,
+            icon: image
+          });
+        }
+
+        var logoControlDiv = document.createElement('div');
+        var logoControl = new LogoControl(logoControlDiv, map);
+
+        logoControlDiv.index = 1;
+        map.controls[google.maps.ControlPosition.TOP_CENTER].push(logoControlDiv);
+
+        var styledMap = new google.maps.StyledMapType( styles, {name: "Styled Map"} );
+        map.mapTypes.set('map_style', styledMap);
+        map.setMapTypeId('map_style');
+
+      }
+
+      google.maps.event.addDomListener(window, 'load', initialize);
+
+    </script>
+  </head>
+  <body>
+  <div class="wrap">
+    <div id="map-canvas"></div>
+
+    <!-- <button onclick="console.log(  'Lat &amp; Long: ' + map.getCenter().k + ',' + map.getCenter().A + ' Zoom: ' + map.getZoom() );">Get Map Co-ords</button> -->
+
+  </div>
 
 <br>
 <br>
@@ -516,5 +604,6 @@
 
 <!-- Load custom js for theme -->
 <script type="text/javascript" src="js/app.js"></script>
+</body>
 </body>
 </html>

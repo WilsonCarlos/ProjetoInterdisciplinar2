@@ -60,9 +60,11 @@
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
 
                 <div id = "bandeiras">
-                    <a href="index.html"><img src="img/bandeiras/Brazil-icon.png"></a>
-                    <a href="index.html"> <img src="img/bandeiras/United-Kingdom-icon.png"></a>
-                    <a href="index.html"><img src="img/bandeiras/Spain-icon.png"></a>
+
+                    <a href="index.html"><img src="img/bandeiras/brasil.png"></a>
+                    <a href="indexen.html"> <img src="img/bandeiras/uk.png"></a>
+                    <a href="indexes.html"><img src="img/bandeiras/espanhol.png"></a>
+
                 </div>
 
                 <div id = "navegação">
@@ -188,7 +190,7 @@
 </script>
 <!-- Jssor Slider Begin -->
 <!-- To move inline styles to css file/block, please specify a class name for each element. -->
-<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 960px;
+<div id="slider1_container" style="position: relative; top: 0px; left: 0px; width: 1099px;
         height: 480px; background: #191919; overflow: hidden;">
 
 <!-- Loading Screen -->
@@ -198,12 +200,19 @@
     </div>
     <div style="position: absolute; display: block; background: url(img/loading.gif) no-repeat center center;
                 top: 0px; left: 0px;width: 100%;height:100%;">
+
     </div>
+
+
 </div>
 
 <br>
+
+
 <!-- Slides Container -->
-<div u="slides" style="cursor: move; position: absolute; left: 240px; top: 0px; width: 720px; height: 480px; overflow: hidden;">
+
+<div>
+<div u="slides" style="cursor: move; position: absolute; left: 240px; top: 0px; width:  859px; height: 480px; overflow: hidden;">
 
     <div>
 
@@ -267,7 +276,6 @@
 
 
 </div>
-
 
 
 
@@ -407,22 +415,147 @@
         </div>
     </div>
     <!-- Thumbnail Item Skin End -->
+
+
 </div>
+
 <!--#endregion Thumbnail Navigator Skin End -->
 <a style="display: none" href="http://www.jssor.com">Image Slider</a>
 <!-- Trigger -->
 <script>
     jssor_slider1_starter('slider1_container');
 </script>
+
+
+</div>
 </div>
 
 
 <div align="center">
-    <span style="color:#fe442c; font-size:15px; font-weight:bold;">O local é o berço da arte de modelar argila, onde cerca de mil artesãos trabalham retratanto,<br> em sua grande maioria, o cotidiano do homem nordestino.</span><br/><br/>
+    <span style="color:#fe442c; font-size:15px; font-weight:bold;">O local é o berço da arte de modelar argila, onde cerca de mil artesãos
+        trabalham retratanto,<br> em sua grande maioria, o cotidiano do homem nordestino, para saber mais clique
+        <a href="http://historiasecenariosnordestinos.blogspot.com.br/2013/06/alto-do-moura-caruaru-pe.html" target="_blank">Aqui</a>.</span><br/><br/>
+
+
 </div>
 <br><br><br>
-<div id="rota"></div>
+   <script src='https://maps.googleapis.com/maps/api/js?key=&sensor=false&extension=.js'></script>
 
+    <script>
+        google.maps.event.addDomListener(window, 'load', init);
+        var map;
+        function init() {
+            var mapOptions = {
+                center: new google.maps.LatLng(-8.297545,-35.994125),
+                zoom: 14,
+                zoomControl: true,
+                zoomControlOptions: {
+                    style: google.maps.ZoomControlStyle.DEFAULT,
+                },
+                disableDoubleClickZoom: true,
+                mapTypeControl: true,
+                mapTypeControlOptions: {
+                    style: google.maps.MapTypeControlStyle.HORIZONTAL_BAR,
+                },
+                scaleControl: true,
+                scrollwheel: true,
+                panControl: true,
+                streetViewControl: true,
+                draggable : true,
+                overviewMapControl: true,
+                overviewMapControlOptions: {
+                    opened: false,
+                },
+                mapTypeId: google.maps.MapTypeId.ROADMAP,
+            }
+            var mapElement = document.getElementById('MyMap');
+            var map = new google.maps.Map(mapElement, mapOptions);
+            var locations = [
+                ['Você esta Aqui!!', 'Sua posição Atual', 'undefined', 'undefined', 'undefined', -8.298993,  -35.975757, 'https://mapbuildr.com/assets/img/markers/default.png'],['01 Ponto de Onibus', 'Empresa: Coletivo<br />Horários: De meia em Meia hora', 'undefined', 'undefined', 'undefined', -8.300522,  -35.977559, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['02 Ponto de Onibus', 'Empresa: Coletivo<br />Horário: de Meia em meia hora', 'undefined', 'undefined', 'undefined', -8.301626,  -35.981679, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['03 Ponto de Onibus', 'Empresa: Coletivo<br />Horário: de meia em meia hora', 'undefined', 'undefined', 'undefined', -8.299503,  -35.991378, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['04 Ponto de Onibus', 'Empresa: Coletivo<br />Horário: De meia em meia hora', 'undefined', 'undefined', 'undefined', -8.301541,  -35.998931, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['05 Ponto de Onibus', 'Empresa: Coletivo<br />Horario: De meia em meia hora<br />Obs:. elevador para deficiente', 'undefined', 'undefined', 'undefined', -8.304004,  -36.007428, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['06 Ponto de Onibus', 'Empresa: Coletivo<br />Horario: De meia em meia hora<br />Obs:. Possui elevador para cadeirantes', 'undefined', 'undefined', 'undefined', -8.301626,  -36.010347, 'https://mapbuildr.com/assets/img/markers/solid-pin-black.png'],['Alto do Moura', 'Direção Certa - Conectando você com os melhores lugares de Caruaru.', 'undefined', 'undefined', 'undefined', -8.289566,  -36.010604, 'https://mapbuildr.com/assets/img/markers/solid-pin-blue.png']
+            ];
+            for (i = 0; i < locations.length; i++) {
+                if (locations[i][1] =='undefined'){ description ='';} else { description = locations[i][1];}
+                if (locations[i][2] =='undefined'){ telephone ='';} else { telephone = locations[i][2];}
+                if (locations[i][3] =='undefined'){ email ='';} else { email = locations[i][3];}
+                if (locations[i][4] =='undefined'){ web ='';} else { web = locations[i][4];}
+                if (locations[i][7] =='undefined'){ markericon ='';} else { markericon = locations[i][7];}
+                marker = new google.maps.Marker({
+                    icon: markericon,
+                    position: new google.maps.LatLng(locations[i][5], locations[i][6]),
+                    map: map,
+                    title: locations[i][0],
+                    desc: description,
+                    tel: telephone,
+                    email: email,
+                    web: web
+                });
+                link = '';     }
+            var waypts = [];
+            directionsService = new google.maps.DirectionsService();
+            directionsDisplay = new google.maps.DirectionsRenderer({
+                suppressMarkers: true
+            });
+            if (locations.length > 1){
+                for (var i = 0; i < locations.length; i++) {
+                    waypts.push({
+                        location:new google.maps.LatLng(locations[i][5], locations[i][6]),
+                        stopover:true
+                    });
+                };
+                var request = {
+                    origin: new google.maps.LatLng(locations[0][5], locations[0][6]),
+                    destination: new google.maps.LatLng(locations[locations.length - 1][5], locations[locations.length - 1][6]),
+                    waypoints: waypts,
+                    optimizeWaypoints: true,
+                    travelMode: google.maps.DirectionsTravelMode.DRIVING
+                };
+                directionsService.route(request, function(response, status) {
+                    if (status == google.maps.DirectionsStatus.OK) {
+                        polylineOptions = {
+                            strokeColor: '#e95347',
+                            strokeWeight: '4'
+                        }
+                        directionsDisplay.setOptions({
+                            polylineOptions: polylineOptions
+                        });
+                        directionsDisplay.setDirections(response);
+                    }
+                });
+                directionsDisplay.setMap(map);
+            }
+
+
+        }
+    </script>
+    <style>
+        #MyMap {
+            height:400px;
+            width:99%;
+        }
+        .gm-style-iw * {
+            display: block;
+            width: 100%;
+        }
+        .gm-style-iw h4, .gm-style-iw p {
+            margin: 0;
+            padding: 0;
+        }
+        .gm-style-iw a {
+            color: #4272db;
+        }
+    </style>
+
+    <div id='MyMap'></div>
+</head>
+
+<body >
+		        <div>
+            <div>
+                <div class="span6" id="map-canvas"></div>
+            </div>
+        <div class="span" id="mymap"></div>
+	</div>
+</body>
 <br>
 <br>
 

@@ -6,9 +6,6 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta charset="utf-8" />
-    <title>Google Maps API v3: Criando rotas</title>
-    <link rel="stylesheet" type="text/css" href="css/estilo.css">
 
     <!-- Carregando Fontes -->
     <link href='http://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
@@ -20,8 +17,28 @@
     <link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
     <link rel="stylesheet" type="text/css" href="css/animate.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <script src="script-tags-for-development.js"></script>
+    <style>
+        html, body {width:100%; height: 100%; padding:0; margin: 0}
+        body {padding: 5px}
+        * { box-sizing: border-box; }
+    </style>
+    <script>
+        angular.module('ngMap').run(function($rootScope) {
+            $rootScope.logLatLng = function(e) {
+                console.log('loc', e.latLng);
+            }
+            $rootScope.wayPoints = [
+                {location: {lat:44.32384807250689, lng: -78.079833984375}, stopover: true},
+                {location: {lat:44.55916341529184, lng: -76.17919921875}, stopover: true},
+            ];
+        });
+    </script>
+
 </head>
-<body>
+<body ng-app="ngMap">
 <header>
     <nav class="navbar navbar-default navbar-fixed-top" role="navigation">
         <div class="container-fluid">
@@ -38,9 +55,9 @@
             <div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
 
                 <div id = "bandeiras">
-                    <a href="index.html"><img src="img/bandeiras/Brazil-icon.png"></a>
-                    <a href="index.html"> <img src="img/bandeiras/United-Kingdom-icon.png"></a>
-                    <a href="index.html"><img src="img/bandeiras/Spain-icon.png"></a>
+                    <a href="index.html"><img src="img/bandeiras/brasil.png"></a>
+                    <a href="index.html"> <img src="img/bandeiras/uk.png"></a>
+                    <a href="index.html"><img src="img/bandeiras/espanhol.png"></a>
                 </div>
 
                 <div id = "navegação">
@@ -59,106 +76,45 @@
     </nav>
 </header>
 
-<!-- A bagaça começa aqui -->
-<br><br><br><br><br>
-<div id="site">
+<br><br><br><br><br><br><br><br>
+<div style="width: 68%; float:left; height: 100%">
+    <b>Origin </b>
+    <select ng-model="origin" ng-init="origin='toronto'">
+        <option value="toronto">Toronto</option>
+        <option value="ottawa">Ottawa</option>
+        <option value="montreal">Montreal</option>
+    </select>
 
-    <h1> Mostrando o Melhor de Caruaru</h1>
+    <b>Destionation </b>
+    <select ng-model="destination" ng-init="destination='ottawa'">
+        <option value="caruaru">Caruaru</option>
+        <option value="altodomoura">Alto do moura</option>
+        <option value="feiradasulanca">Feira da Sulanca</option>
+    </select>
 
-    <form method="post" action="index.html">
-        <fieldset>
+    <b>Mode of Travel: </b>
+    <select ng-model="travelMode" ng-init="travelMode='DRIVING'">
+        <option value="DRIVING">Driving</option>
+        <option value="WALKING">Walking</option>
+        <option value="BICYCLING">Bicycling</option>
+        <option value="TRANSIT">Transit</option>
+    </select>
 
-    <br>
-            <div>
-                <label for="txtEnderecoPartida">Ponto de Partida  --> </label>
-                <input type="text" id="txtEnderecoPartida" name="txtEnderecoPartida" />
-            </div>
-
-            <div>
-                <label for="txtEnderecoChegada">Destino Escolhido-></label>
-                <input type="text" id="txtEnderecoChegada" name="txtEnderecoChegada" />
-            </div>
-
-            <div>
-                <input type="submit" id="btnEnviar" name="btnEnviar" value="Enviar" />
-            </div>
-        </fieldset>
-    </form>
-
-    <div id="mapa"></div>
-
-    <div id="trajeto-texto"></div>
-
+    <ng-map zoom="14" center="37.7699298, -122.4469157" style="height:90%" on-click="logLatLng()" >
+        <directions
+                draggable="true"
+                panel="directions-panel"
+                travel-mode="{{travelMode}}"
+                waypoints="{{wayPoints}}"
+                origin="{{origin}}"
+                destination="{{destination}}">
+        </directions>
+    </ng-map>
+    Directions path length:
+    {{map.directionsRenderers[0].directions.routes[0].overview_path.length}}
 </div>
 
-<script src="js/jquery.min.js"></script>
-
-<!-- Maps API Javascript -->
-<script src="http://maps.googleapis.com/maps/api/js?sensor=false"></script>
-
-<!-- Arquivo de inicialização do mapa -->
-<script src="js/mapa.js"></script>
-
-<br><br><br>
-<!-- End of bagaça -->
-
-
-
-
-<div class="address">
-    <div class="row">
-
-    </div>
+<div id="directions-panel" style="width: 28%; float:left; height: 100%; overflow: auto; padding: 0px 5px">
 </div>
-</div>
-</section>
-<!-- End contact section -->
-<!-- Start footer section -->
-<footer>
-    <div class="container">
-        <p class="copyright">
-            &copy; 2015 All rights reserved - Sistemax
-
-
-            <p class="acesso">
-                <a href="login.html"><img src="img/App-login-manager-icon.png"/> </a>
-                <a href="cadadm.html"><img src="img/Icones/adm.png"/></a>
-                <a href="cadempon.html"><img src="img/Icones/1444785052_aiga_bus_on_grn_circle.png"/></a>
-            </p>
-
-        </form>
-        </p>
-
-        <ul class="social">
-            <li class="wow bounceIn"><a href="http://google.com" target="_blank"><i class="fa fa-facebook"></i></a></li>
-            <li class="wow bounceIn" data-wow-delay="0.1s"><a href="http://google.com" target="_blank"><i class="fa fa-twitter"></i></a></li>
-            <li class="wow bounceIn" data-wow-delay="0.5s"><a href="http://google.com" target="_blank"><i class="fa fa-google"></i></a></li>
-
-        </ul>
-
-
-
-
-        <a href="index.html#home" data-scroll class="back-to-top"><i class="fa fa-chevron-up"></i></a>
-    </div>
-</footer>
-<!-- End footer section -->
-<!-- End footer section -->
-
-<!-- Load jQuery -->
-<script type="text/javascript" src="js/jquery-1.11.2.min.js"></script>
-
-<!-- Load Booststrap -->
-<script type="text/javascript" src="js/bootstrap.js"></script>
-
-<!-- Load custom js plugins -->
-<script type="text/javascript" src="js/jquery.mixitup.js"></script>
-<script type="text/javascript" src="js/jquery.magnific-popup.min.js"></script>
-<script type="text/javascript" src="js/wow.js"></script>
-<script type="text/javascript" src="js/smooth-scroll.js"></script>
-
-<!-- Load custom js for theme -->
-<script type="text/javascript" src="js/app.js"></script>
 </body>
 </html>
-

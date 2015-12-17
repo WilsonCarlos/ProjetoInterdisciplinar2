@@ -28,7 +28,7 @@ public class TestEmpresaDAO {
 		empresa.setLogin_empresa("algo@hotmail.com");
 		empresa.setSenha_empresa("123");
 		empresa.setCnpj_empresa("1231231234134");
-		empresa.setTelefone_empresa("81 999999");
+		empresa.setTelefone_empresa("81 9999fd99");
 
 		EmpresaDAO empresaDao = new EmpresaDAO();
 		empresaDao.cadastrar(empresa);

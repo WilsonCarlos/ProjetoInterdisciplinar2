@@ -19,6 +19,18 @@
 	<link rel="stylesheet" type="text/css" href="css/magnific-popup.css">
 	<link rel="stylesheet" type="text/css" href="css/animate.css">
 	<link rel="stylesheet" type="text/css" href="css/cadastro.css">
+
+        <script>
+            function validarSenha(){
+                senha_empresa = document.cadempresa.senha_empresa.value
+                repsenha = document.cadempresa.repsenha.value
+
+                if (senha_empresa == repsenha)
+                    alert("Cadastrado com Sucesso!")
+                else
+                    alert("Senhas Diferentes, por favor redigite!")
+            }
+        </script>
 </head>
 <body>
 	<header>
@@ -37,9 +49,9 @@
 				<div class="collapse navbar-collapse navbar-right" id="navbar-collapse">
 
                     <div id = "bandeiras">
-                         <a href="index.html"><img src="img/bandeiras/Brazil-icon.png"></a>
-                         <a href="index.html"> <img src="img/bandeiras/United-Kingdom-icon.png"></a>
-                         <a href="index.html"><img src="img/bandeiras/Spain-icon.png"></a>
+                        <a href="index.html"><img src="img/bandeiras/brasil.png"></a>
+                        <a href="indexen.html"> <img src="img/bandeiras/uk.png"></a>
+                        <a href="indexes.html"><img src="img/bandeiras/espanhol.png"></a>
                     </div>
 
                     <div id = "navegação">
@@ -61,34 +73,34 @@
     
     <h3>Cadastro Empresa</h3>
    
-    <form class="row" action="empresacontroller.do" method="post">
+    <form class="row" action="empresacontroller.do" method="post" name="cadempresa">
 
 
             <div class="form-group col-md-6">
-				<input name="nome_empresa" placeholder="Nome da Empresa" type="text"  class="form-control" value=""/>
+				<input name="nome_empresa" placeholder="Nome da Empresa" type="text"  class="form-control" value="" required />
             </div>
 
             <div class="form-group col-md-6">
-                <input name="login_empresa" type="text" placeholder="Login da Empresa" class="form-control" value=""/>
+                <input name="login_empresa" type="text" placeholder="Login da Empresa" class="form-control" value="" required/>
             </div>
 
             <div class="form-group col-md-6">
-                <input name="senha_empresa" type="password" placeholder="Senha" class="form-control" value=""/>
+                <input name="senha_empresa" type="password" placeholder="Senha" class="form-control" value="" required/>
 			</div>
 
             <div class="form-group col-md-6">
-				<input name="repsenha" type="password" placeholder="Confirmar Senha" class="form-control" />
+				<input name="repsenha" type="password" placeholder="Confirmar Senha" class="form-control" required/>
 			</div>
 
             <div class="form-group col-md-6">
-                <input name="cnpj_empresa" type="text" placeholder="Digite o CNPJ Da Empresa" class="form-control" value=""/>
+                <input name="cnpj_empresa" type="text" placeholder="Digite o CNPJ Da Empresa" class="form-control" value="" required/>
             </div>
             <div class="form-group col-md-6">
-                <input name="telefone_empresa" type="text" placeholder="Digite seu telefone" class="form-control" value=""/>
+                <input name="telefone_empresa" type="text" placeholder="Digite seu telefone" class="form-control" value="" required/>
             </div>
 
             <div class="form-group col-md-12">
-                <input class="btn btn-lg btn-primary" type="submit" value="Salvar"/>
+                <input class="btn btn-lg btn-primary" type="submit" value="Salvar" onClick="validarSenha()"/>
 			</div>
 			
 
@@ -164,5 +176,6 @@
 
         <!-- Load custom js for theme -->
         <script type="text/javascript" src="js/app.js"></script>
+</header>
 </body>
 </html>

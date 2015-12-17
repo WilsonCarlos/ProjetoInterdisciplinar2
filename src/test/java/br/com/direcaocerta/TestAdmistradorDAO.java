@@ -26,8 +26,8 @@ public class TestAdmistradorDAO {
 
 		Administrador administrador = new Administrador();
 
-		administrador.setLogin_administrador("Raulzito");
-		administrador.setSenha_administrador("666");
+		administrador.setLogin_administrador("w");
+		administrador.setSenha_administrador("8549");
 
 		Administrador adminRetorno = administradorDAO.autenticar(administrador);
 
@@ -57,9 +57,9 @@ public class TestAdmistradorDAO {
 	public static void testCadastrar() {
 		Administrador administrador = new Administrador();
 		// Criando o administrador
-		administrador.setNome_administrador("ValLove");
-		administrador.setLogin_administrador("vallove@hotmail.com");
-		administrador.setSenha_administrador("lovein");
+		administrador.setNome_administrador("w");
+		administrador.setLogin_administrador("www");
+		administrador.setSenha_administrador("8549");
 		administrador.setCpf_administrador("12345678910");
 
 		AdministradorDAO administradorDao = new AdministradorDAO();
